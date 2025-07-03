@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8faff;
+  color: #333;
+}
+
+h1, h2 {
+  font-family: 'Comfortaa', cursive;
+}
+
+.pastel-gradient {
+  background: linear-gradient(to right, #cfe9f1, #fde2ff);
+}
+
+/* Emoji Mood Grid using CSS Grid */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  font-size: 2rem;
+}
+
+.emoji {
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+
+.emoji:hover {
+  transform: scale(1.3);
+  background: #f1f1f1;
+}
+
+/* Journal text area extra styles */
+#journal textarea {
+  font-size: 1rem;
+  border-radius: 10px;
+  resize: vertical;
+}
+
+/* Link Styling in Resources */
+#resources a {
+  text-decoration: none;
+  color: #4a90e2;
+  transition: color 0.3s ease;
+}
+
+#resources a:hover {
+  color: #2c5a9d;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .emoji-grid {
+    font-size: 1.5rem;
+    gap: 0.8rem;
+  }
+}
+
+/* ------------------------------------ */
+/* LAYOUT ENHANCEMENTS + DEPTH EFFECTS  */
+/* ------------------------------------ */
+
+/* Section spacing and smooth animations */
+section {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Shadow and rounded corners for elevation */
+  .card, section {
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    background-color: #ffffff;
+  }
+  
+  /* Add spacing between all sections */
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Add soft background bubbles */
+  body::before {
+    content: '';
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: #ffe4f2;
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+    z-index: -1;
+    filter: blur(100px);
+  }
+  
+  body::after {
+    content: '';
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    background: #cce6ff;
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+    z-index: -1;
+    filter: blur(120px);
+  }
+  
+  /* ------------------------------------ */
+  /* MOOD TRACKER - Personality           */
+  /* ------------------------------------ */
+  #mood-tracker {
+    border-left: 6px solid #c4b5fd;
+  }
+  .emoji {
+    background-color: #f9f9f9;
+    padding: 0.6rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .emoji:hover {
+    background: #e0e7ff;
+    transform: scale(1.3);
+  }
+  
+  /* ------------------------------------ */
+  /* QUOTES - Elegant box                 */
+  /* ------------------------------------ */
+  #quotes {
+    background: linear-gradient(to bottom right, #f0f8ff, #e9dfff);
+    border-left: 6px solid #a78bfa;
+  }
+  #quote {
+    font-size: 1.1rem;
+    color: #4b5563;
+  }
+  
+  /* ------------------------------------ */
+  /* JOURNAL - Paper style                */
+  /* ------------------------------------ */
+  #journal {
+    background: #fffdf7;
+    border-left: 6px solid #fbbf24;
+  }
+  #journal-entry {
+    background: #fffdf7;
+    border: 1px solid #fef3c7;
+  }
+  
+  /* ------------------------------------ */
+  /* RESOURCES - Calm links               */
+  /* ------------------------------------ */
+  #resources {
+    background: #f0fdf4;
+    border-left: 6px solid #34d399;
+  }
+  #resources a {
+    font-weight: 600;
+  }
+  #resources a:hover {
+    text-decoration: underline;
+  }
+  
+  /* ------------------------------------ */
+  /* BUTTON TRANSITIONS                   */
+  /* ------------------------------------ */
+  button, .btn {
+    transition: all 0.3s ease;
+  }
+  
+  button:hover, .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  
+  /* ------------------------------------ */
+  /* FOOTER TOUCH                         */
+  /* ------------------------------------ */
+  footer {
+    border-top: 1px solid #e5e7eb;
+    background: #f8fafc;
+    padding: 1.5rem 0;
+    font-family: 'Comfortaa', cursive;
+    color: #6b7280;
+  }
+/* Add manual margin between mood + quotes if needed */
+#mood-tracker,
+#quotes {
+  margin-bottom: 1rem;
+}
+  
+/* Default (Light) */
+body.light-mode {
+    background-color: #f8faff;
+    color: #333;
+  }
+  
+  /* Dark Mode */
+  body.dark-mode {
+    background-color: #1e1e2f;
+    color: #f1f1f1;
+  }
+  
+  body.dark-mode section {
+    background-color: #2b2b40;
+    border-color: #444;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  body.dark-mode a {
+    color: #93c5fd;
+  }
+  
+  body.dark-mode .emoji:hover {
+    background-color: #3a3a5a;
+  }
+  
+  body.dark-mode textarea,
+  body.dark-mode input,
+  body.dark-mode button {
+    background-color: #3a3a5a;
+    color: #f1f1f1;
+    border-color: #666;
+  }
+
+  
