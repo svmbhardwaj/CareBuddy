@@ -48,17 +48,24 @@ document.querySelectorAll('.emoji').forEach(emoji => {
 });
 
 // ========== 2. Quote Generator ==========
-async function getQuote() {
+function getQuote() {
   const quoteBox = document.getElementById("quote");
-  try {
-    const res = await fetch("https://api.realinspire.live/v1/quotes/random?limit=1");
-    const [data] = await res.json();
-    quoteBox.innerText = `${data.content} — ${data.author}`;
-  } catch (err) {
-    console.error("Quote error:", err);
-    quoteBox.innerText = "Couldn't load quote. Try again!";
-  }
+
+  $.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes',
+    headers: { 'X-Api-Key': 'T4/do0qset1+L2mNhc62Ww==wmmyxCTW9hmGiowx' },
+    success: function (result) {
+      const quote = result[0];
+      quoteBox.innerText = `${quote.quote} — ${quote.author}`;
+    },
+    error: function (jqXHR) {
+      console.error('Quote API error:', jqXHR.responseText);
+      quoteBox.innerText = "Couldn't load quote. Try again!";
+    }
+  });
 }
+
 
 
 
