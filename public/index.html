@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CareBuddy - Your safe space to share feelings and feel better" />
+  <title>CareBuddy - Mental Health Journal</title>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="light-mode">
+
+  <div class="container py-5">
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="mb-4">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div>
+          <h1>👋 Welcome to CareBuddy</h1>
+          <p class="mb-0">Your safe space to share feelings and feel better</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button id="affirmation-btn" class="btn btn-primary" title="Get a random affirmation or gratitude moment">
+            ✨ Spark of Joy
+          </button>
+          <button id="breathing-btn" class="btn btn-outline-secondary" title="Quick guided breathing exercise">
+            🫁 Breathe
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breathing Exercise Modal -->
+    <div id="breathing-modal" class="d-none position-fixed top-50 start-50 translate-middle" style="z-index: 2000; width: 300px; text-align: center;">
+      <div class="card shadow-lg p-4" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none;">
+        <h3 class="mb-3">🫁 Guided Breathing</h3>
+        <div id="breathing-circle" class="mx-auto mb-4" style="width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-weight: bold; animation: breathe 8s infinite;">
+          <span id="breathing-text">Breathe In</span>
+        </div>
+        <p class="small mb-3">Follow the circle. Calm your mind.</p>
+        <button class="btn btn-light" onclick="closeBreathingModal()">Done ✓</button>
+      </div>
+    </div>
+
+    <!-- Breathing Modal Overlay -->
+    <div id="breathing-overlay" class="d-none position-fixed top-0 start-0 w-100 h-100" style="background: rgba(0,0,0,0.5); z-index: 1999;" onclick="closeBreathingModal()"></div>
+
+    <!-- Grid: Mood Tracker + Quotes -->
+    <div class="row g-4 mb-4">
+      <!-- Mood Tracker -->
+      <section id="mood-tracker" class="col-lg-6">
+        <h2>💭 How are you feeling today?</h2>
+        <div class="emoji-grid mt-3">
+          <span class="emoji" data-mood="happy" title="Happy" role="button" tabindex="0">😊</span>
+          <span class="emoji" data-mood="sad" title="Sad" role="button" tabindex="0">😢</span>
+          <span class="emoji" data-mood="angry" title="Angry" role="button" tabindex="0">😠</span>
+          <span class="emoji" data-mood="anxious" title="Anxious" role="button" tabindex="0">😰</span>
+          <span class="emoji" data-mood="excited" title="Excited" role="button" tabindex="0">🤩</span>
+        </div>
+        <div id="chatbot-reply" class="mt-4 d-none"></div>
+      </section>
+
+      <!-- Daily Motivation -->
+      <section id="quotes" class="col-lg-6">
+        <h2>✨ Daily Motivation</h2>
+        <div id="quote" class="my-4">Loading inspiration...</div>
+        <button class="btn btn-primary" onclick="getQuote()" title="Get a new quote">
+          🔁 New Quote
+        </button>
+      </section>
+    </div>
+
+    <!-- Journal Section -->
+    <section id="journal" class="mb-4">
+      <h2>📝 Your Journal</h2>
+      <p class="text-muted">Write freely. Your feelings matter.</p>
+      <textarea 
+        id="journal-entry" 
+        class="form-control mt-3" 
+        rows="5" 
+        placeholder="Write your thoughts, feelings, and experiences... (minimum 5 characters)"
+        aria-label="Journal entry text area"
+      ></textarea>
+      <div class="d-flex justify-content-between align-items-center mt-3 flex-wrap gap-2">
+        <div>
+          <button class="btn btn-success me-2" onclick="saveEntry()" title="Save journal entry">
+            💾 Save
+          </button>
+          <button class="btn btn-outline-danger" onclick="deleteEntry()" title="Delete all entries">
+            🗑️ Delete All
+          </button>
+        </div>
+      </div>
+
+      <!-- Journal Logs -->
+      <div id="journal-logs" class="mt-5">
+        <h5>🗂️ Past Entries</h5>
+        <ul id="entry-list" class="list-group mt-3"></ul>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="mb-4">
+      <h2>🌐 Helpful Resources</h2>
+      <p class="text-muted">When you need extra support, these resources can help.</p>
+      <ul class="list-group list-group-flush mt-3">
+        <li class="list-group-item">
+          <a href="https://mynoise.net/" target="_blank" rel="noopener noreferrer">
+            🎵 myNoise - Calming Soundscapes
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="https://www.artofliving.org/in-en" target="_blank" rel="noopener noreferrer">
+            🧘 Art of Living - Meditation & Wellness
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="https://yourdost.com/" target="_blank" rel="noopener noreferrer">
+            💬 Your Dost - Counseling Support
+          </a>
+        </li>
+        <li class="list-group-item">
+          <a href="https://www.headspace.com/" target="_blank" rel="noopener noreferrer">
+            🧠 Headspace - Meditation App
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+      <p>💙 Made with care for your mental wellness | CareBuddy</p>
+      <p class="small text-muted">Remember: You are not alone. Reach out for help when you need it.</p>
+    </footer>
+
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>

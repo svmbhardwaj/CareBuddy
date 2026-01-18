@@ -1,0 +1,625 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7ff 0%, #f0e8ff 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 700;
+}
+
+p {
+  font-weight: 300;
+  color: #666;
+}
+
+/* ========== WELCOME SECTION ========== */
+#welcome {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  animation: slideInDown 0.6s ease;
+}
+
+#welcome h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#welcome p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+}
+
+/* Header buttons styling for better contrast */
+#welcome #affirmation-btn {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa) !important;
+  color: #667eea !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3) !important;
+}
+
+#welcome #affirmation-btn:hover {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff) !important;
+  color: #764ba2 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5) !important;
+}
+
+#welcome #breathing-btn {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #667eea !important;
+  border: 2px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3) !important;
+}
+
+#welcome #breathing-btn:hover {
+  background: white !important;
+  color: #764ba2 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========== EMOJI MOOD GRID ========== */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 1.2rem;
+  justify-items: center;
+  margin-top: 1.5rem;
+}
+
+.emoji {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5f7ff, #ede9ff);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 3px solid transparent;
+}
+
+.emoji:hover {
+  transform: scale(1.2) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.emoji[data-selected="true"] {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: #667eea;
+  transform: scale(1.15);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* ========== CARDS & SECTIONS ========== */
+section, .card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease;
+}
+
+section:hover, .card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+h2, h5 {
+  color: #333;
+  margin-bottom: 1.2rem;
+  font-size: 1.3rem;
+}
+
+/* ========== MOOD TRACKER ========== */
+#mood-tracker {
+  border-left: 5px solid #667eea;
+}
+
+#chatbot-reply {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border: none;
+  border-left: 5px solid #ff9f43;
+  border-radius: 10px;
+  padding: 1.2rem;
+  animation: slideInLeft 0.4s ease;
+  font-weight: 500;
+  color: #333;
+}
+
+/* ========== QUOTES SECTION ========== */
+#quotes {
+  background: linear-gradient(135deg, #f0f8ff 0%, #e9dfff 100%);
+  border-left: 5px solid #a78bfa;
+  text-align: center;
+}
+
+#quote {
+  font-size: 1.2rem;
+  color: #4b5563;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.8;
+  margin: 1.5rem 0;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========== JOURNAL SECTION ========== */
+#journal {
+  border-left: 5px solid #fbbf24;
+  background: #fffdf7;
+}
+
+#journal-entry {
+  background: white;
+  border: 2px solid #fef3c7;
+  border-radius: 12px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  resize: vertical;
+  transition: all 0.3s ease;
+  min-height: 120px;
+}
+
+#journal-entry:focus {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+  outline: none;
+}
+
+.char-count {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* ========== RESOURCES SECTION ========== */
+#resources {
+  border-left: 5px solid #34d399;
+  background: #f0fdf4;
+}
+
+#resources a {
+  text-decoration: none;
+  color: #10b981;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#resources a:hover {
+  color: #059669;
+  transform: translateX(5px);
+}
+
+#resources .list-group-item {
+  border: none;
+  background: transparent;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+#resources .list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.btn-outline-danger {
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+  background: #ef4444;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ========== JOURNAL ENTRIES LIST ========== */
+#entry-list {
+  list-style: none;
+}
+
+.list-group-item {
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  transform: translateX(3px);
+}
+
+.badge {
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+/* ========== MODE TOGGLE ========== */
+#mode-toggle {
+  font-size: 1.2rem;
+  padding: 0.7rem 1.2rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+#mode-toggle:hover {
+  background: white;
+  color: #667eea;
+  transform: scale(1.05);
+}
+
+/* ========== NOTIFICATIONS ========== */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  animation: slideInRight 0.4s ease;
+  z-index: 1000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.notification.success {
+  background: linear-gradient(135deg, #34d399, #10b981);
+}
+
+.notification.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.notification.info {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background: white;
+  border-top: 2px solid #f0f0f0;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+  color: #999;
+}
+
+/* ========== DARK MODE ========== */
+body.dark-mode {
+  background: linear-gradient(135deg, #1e1e2f 0%, #2a2a3e 100%);
+  color: #f1f1f1;
+}
+
+body.dark-mode section,
+body.dark-mode .card {
+  background-color: #2b2b40;
+  border-color: #444;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .emoji {
+  background: linear-gradient(135deg, #3a3a5a, #4a4a6a);
+  color: #f1f1f1;
+}
+
+body.dark-mode .emoji:hover,
+body.dark-mode .emoji[data-selected="true"] {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+body.dark-mode #journal-entry {
+  background: #3a3a5a;
+  border-color: #555;
+  color: #f1f1f1;
+}
+
+body.dark-mode #journal-entry:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+body.dark-mode a {
+  color: #93c5fd;
+}
+
+body.dark-mode a:hover {
+  color: #60a5fa;
+}
+
+body.dark-mode footer {
+  background: #1e1e2f;
+  border-color: #444;
+}
+
+body.dark-mode #chatbot-reply {
+  background: linear-gradient(135deg, #5a4a3a, #6a5a4a);
+  color: #f1f1f1;
+  border-color: #ff9f43;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========== AFFIRMATION BURST ========== */
+.affirmation-pulse {
+  animation: affirmationPulse 0.6s ease;
+}
+
+@keyframes affirmationPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(244, 114, 182, 0.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#affirmation-display {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  margin-top: 1rem;
+  animation: fadeInUp 0.6s ease;
+  border-left: 4px solid #667eea;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #affirmation-display {
+  color: #f1f1f1;
+  background: #2b2b40;
+  border-left-color: #a78bfa;
+}
+
+/* ========== BREATHING ANIMATION ========== */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    font-size: 1rem;
+  }
+  33% {
+    transform: scale(1.3);
+    font-size: 1.2rem;
+  }
+  66% {
+    transform: scale(0.8);
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes breathePulse {
+  0%, 100% {
+    box-shadow: inset 0 0 0 0 rgba(102, 126, 234, 0.7), 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: inset 0 0 0 30px rgba(102, 126, 234, 0.1), 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+#breathing-circle {
+  animation: breathePulse 8s infinite;
+}
+
+/* Breathing modal specific styles */
+#breathing-modal {
+  animation: breathingModalAppear 0.4s ease;
+}
+
+@keyframes breathingModalAppear {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+body.dark-mode #breathing-modal .card {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  color: white;
+}
+
+/* Breathing modal text styling for better visibility */
+#breathing-modal .card p.small {
+  color: white !important;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  section, .card {
+    padding: 1.5rem;
+  }
+
+  #welcome h1 {
+    font-size: 1.8rem;
+  }
+
+  #welcome p {
+    font-size: 1rem;
+  }
+
+  .emoji-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+  }
+
+  .emoji {
+    padding: 0.8rem;
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  #quote {
+    font-size: 1rem;
+  }
+
+  .notification {
+    right: 10px;
+    left: 10px;
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
+  section, .card {
+    padding: 1rem;
+  }
+
+  h2, h5 {
+    font-size: 1.1rem;
+  }
+
+  .emoji {
+    padding: 0.6rem;
+    font-size: 1.8rem;
+  }
+
+  #journal-entry {
+    min-height: 100px;
+  }
+}
+
+  
